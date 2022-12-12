@@ -14,4 +14,4 @@
                   name: hello-world
                   port:
                     number: 8123
-              path: /hello-workd
+              path: /hello-world

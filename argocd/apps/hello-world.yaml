@@ -10,8 +10,7 @@ spec:
     targetRevision: HEAD
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: scrapers
-  project: scrapers
+    namespace: default
   syncPolicy:
     automated:
       prune: true

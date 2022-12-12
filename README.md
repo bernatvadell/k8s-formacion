@@ -3,6 +3,16 @@ Docker es una plataforma de contenedores que permite empaquetar y ejecutar aplic
 
 En resumen, Docker se puede considerar como una herramienta que permite crear y ejecutar contenedores, mientras que Kubernetes es una plataforma que permite gestionar y administrar una red de contenedores de manera eficiente y escalable.
 
+## Cluster Nodes
+Son servidores o máquinas que ejecutan los pods y sus contenedores. Cada nodo tiene un rol que determina qué tareas puede realizar en el clúster. Los roles de los nodos pueden incluir cosas como ejecutar pods, almacenar datos, actuar como un punto de entrada para el clúster o realizar tareas de supervisión. Algunos de los roles de nodos comunes en Kubernetes son:
+
+* `Master Node:` Un nodo maestro es un nodo especial que ejecuta el controlador de clúster y realiza tareas de administración como planificar los pods y realizar el seguimiento de su estado.
+* `Worker Node:`: Un nodo de trabajo es un nodo que ejecuta los pods y sus contenedores. Los nodos de trabajo pueden realizar cualquier tarea que se le asigne, como procesar solicitudes de entrada o almacenar datos.
+* `Storage Node:` Un nodo de almacenamiento es un nodo que se utiliza para almacenar datos persistentes. Los pods que necesiten almacenamiento persistente se colocarán en nodos de almacenamiento para garantizar que sus datos no se pierdan si se detienen o eliminan.
+* `Ingress Node:` Un nodo de ingreso es un nodo que actúa como un punto de entrada para el clúster. Los usuarios y aplicaciones externas pueden enviar solicitudes al clúster a través de un nodo de ingreso, que las redirigirá a los nodos de trabajo para su procesamiento.
+
+Los roles de los nodos pueden ser asignados de forma estática o dinámica, dependiendo de las necesidades del clúster. Por ejemplo, un clúster pequeño puede tener un único nodo que actúe como maestro y de trabajo, mientras que un clúster más grande puede tener nodos dedicados para cada rol.
+
 # Kubernetes Components
 Todos los componentes tienen una estructura común que se puede especificar mediante un fichero YAML o JSON, en nuestros ejemplos los veremos en formato YAML ya que facilitan la lectura.
 
@@ -16,15 +26,12 @@ spec:
   <object specification>
 ```
 
-## Nodes
-Son servidores o máquinas que ejecutan los pods y sus contenedores. Cada nodo tiene un rol que determina qué tareas puede realizar en el clúster. Los roles de los nodos pueden incluir cosas como ejecutar pods, almacenar datos, actuar como un punto de entrada para el clúster o realizar tareas de supervisión. Algunos de los roles de nodos comunes en Kubernetes son:
+# Kubernetes Namespaces
+Los namespaces de Kubernetes son una forma de dividir un cluster en diferentes entornos virtuales lógicos. Cada namespace tiene su propio conjunto de objetos, como pods y servicios, y cada objeto tiene un nombre único dentro del namespace. Esto permite a los desarrolladores crear objetos con nombres comunes en diferentes namespaces sin preocuparse por conflictos de nombres. Los namespaces también son útiles para aplicar políticas de seguridad y control de acceso a diferentes recursos en un cluster.
 
-* `Master Node:` Un nodo maestro es un nodo especial que ejecuta el controlador de clúster y realiza tareas de administración como planificar los pods y realizar el seguimiento de su estado.
-* `Worker Node:`: Un nodo de trabajo es un nodo que ejecuta los pods y sus contenedores. Los nodos de trabajo pueden realizar cualquier tarea que se le asigne, como procesar solicitudes de entrada o almacenar datos.
-* `Storage Node:` Un nodo de almacenamiento es un nodo que se utiliza para almacenar datos persistentes. Los pods que necesiten almacenamiento persistente se colocarán en nodos de almacenamiento para garantizar que sus datos no se pierdan si se detienen o eliminan.
-* `Ingress Node:` Un nodo de ingreso es un nodo que actúa como un punto de entrada para el clúster. Los usuarios y aplicaciones externas pueden enviar solicitudes al clúster a través de un nodo de ingreso, que las redirigirá a los nodos de trabajo para su procesamiento.
+Para realizar peticiones a un servicio alojado en un namespace diferente. Kubernetes nos proporciona el siguiente endpoint:
 
-Los roles de los nodos pueden ser asignados de forma estática o dinámica, dependiendo de las necesidades del clúster. Por ejemplo, un clúster pequeño puede tener un único nodo que actúe como maestro y de trabajo, mientras que un clúster más grande puede tener nodos dedicados para cada rol.
+`http://<service-name>.<namespace-name>.svc.cluster.local`
 
 ## Workloads
 ### Pods
@@ -76,7 +83,7 @@ spec:
               cpu: "500m"
 ```
 
-### Depylement
+### Deployment
 Se utiliza para desplegar y administrar aplicaciones en un clúster. Un deployment define un conjunto de réplicas de un pod que se deben ejecutar en el clúster, así como la forma en que se deben actualizar esas réplicas. Cuando se crea un deployment, Kubernetes se encarga de asegurarse de que el número correcto de réplicas del pod esté en ejecución en todo momento, y puede realizar actualizaciones en caliente de los pods de forma transparente para el usuario. Los deployments son útiles para garantizar la alta disponibilidad de las aplicaciones en un clúster y facilitar su actualización y despliegue.
 
 ```yaml
@@ -96,7 +103,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: nginx:1.14.2
+          image: nginx:1.15.2
           ports:
             - containerPort: 80
           resources:

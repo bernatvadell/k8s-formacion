@@ -630,6 +630,9 @@ Es una herramienta de línea de comandos para interactuar con un clúster de Kub
 
 kubectl es una herramienta esencial para cualquier persona que trabaje con Kubernetes, ya que permite administrar y controlar un clúster de manera sencilla y eficiente. kubectl se puede instalar en cualquier sistema operativo y se puede utilizar para interactuar con cualquier clúster de Kubernetes, ya sea local o en la nube.
 
+## Kustomize
+Kustomize es una herramienta que se utiliza para personalizar configuraciones de Kubernetes. Permite a los usuarios crear versiones modificadas de aplicaciones de Kubernetes sin tener que editar directamente el código fuente. Esto permite que las mismas aplicaciones sean utilizadas en diferentes entornos de despliegue de Kubernetes, como desarrollo, pruebas o producción, simplemente cambiando la configuración. Kustomize se integra con otras herramientas de Kubernetes como kubectl y puede ser utilizado tanto en línea de comandos como en scripts.
+
 ## Lens
 Lens es una herramienta de código abierto para administrar y desarrollar aplicaciones de Kubernetes de manera visual. Lens ofrece una interfaz de usuario gráfica que permite a los usuarios ver y controlar el estado de un clúster de Kubernetes de manera sencilla y eficiente. Con Lens, los usuarios pueden ver información detallada sobre los recursos en un clúster, como contenedores, servicios, pod y nodos, y realizar acciones como desplegar aplicaciones, escalar contenedores o recuperar logs.
 

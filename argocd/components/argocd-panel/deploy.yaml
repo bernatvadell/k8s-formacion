@@ -1,0 +1,18 @@
+  apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    name: argocd-panel
+    namespace: argocd
+  spec:
+    ingressClassName: nginx
+    rules:
+      - host: kubernetes.docker.internal
+        http:
+          paths:
+            - pathType: Prefix
+              backend:
+                service:
+                  name: argocd-server
+                  port:
+                    number: 80
+              path: /argocd

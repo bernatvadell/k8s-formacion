@@ -602,7 +602,7 @@ Los ingresos requieren que nuestro cluster este configurado con un IngressClass 
 Para instalar la clase de ingreso de nginx podemos utilizar el siguiente comando:
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.41.2/deploy/static/provider/cloud/deploy.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.6.0/deploy/static/provider/cloud/deploy.yaml
 ```
 
 ### Network Policy

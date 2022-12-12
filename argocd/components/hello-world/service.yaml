@@ -7,4 +7,4 @@ spec:
   - port: 8123
     targetPort: 80
   selector:
-    service: hello-world
+    app: hello-world

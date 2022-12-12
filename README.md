@@ -597,6 +597,14 @@ spec:
               servicePort: 80
 ```
 
+Los ingresos requieren que nuestro cluster este configurado con un IngressClass de lo contrario no se aplicarán los enrutamientos.
+
+Para instalar la clase de ingreso de nginx podemos utilizar el siguiente comando:
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.41.2/deploy/static/provider/cloud/deploy.yaml
+```
+
 ### Network Policy
 Permite especificar reglas de red para controlar el tráfico entre los contenedores en un clúster. Cuando se crea un Network Policy en Kubernetes, se especifican reglas que indican qué contenedores pueden comunicarse entre sí y cómo pueden hacerlo. Los Network Policies son útiles para asegurar que el tráfico en un clúster siga una configuración específica y para evitar ataques potenciales.
 

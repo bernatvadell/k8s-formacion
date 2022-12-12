@@ -641,6 +641,14 @@ kubectl es una herramienta esencial para cualquier persona que trabaje con Kuber
 ## Kustomize
 Kustomize es una herramienta que se utiliza para personalizar configuraciones de Kubernetes. Permite a los usuarios crear versiones modificadas de aplicaciones de Kubernetes sin tener que editar directamente el código fuente. Esto permite que las mismas aplicaciones sean utilizadas en diferentes entornos de despliegue de Kubernetes, como desarrollo, pruebas o producción, simplemente cambiando la configuración. Kustomize se integra con otras herramientas de Kubernetes como kubectl y puede ser utilizado tanto en línea de comandos como en scripts.
 
+Para instalar kustomize:
+
+```bash
+curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
+
+sudo install -o root -g root -m 0755 kustomize /usr/local/bin/kustomize
+```
+
 ## Lens
 Lens es una herramienta de código abierto para administrar y desarrollar aplicaciones de Kubernetes de manera visual. Lens ofrece una interfaz de usuario gráfica que permite a los usuarios ver y controlar el estado de un clúster de Kubernetes de manera sencilla y eficiente. Con Lens, los usuarios pueden ver información detallada sobre los recursos en un clúster, como contenedores, servicios, pod y nodos, y realizar acciones como desplegar aplicaciones, escalar contenedores o recuperar logs.
 

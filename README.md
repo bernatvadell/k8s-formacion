@@ -3,15 +3,26 @@ Docker es una plataforma de contenedores que permite empaquetar y ejecutar aplic
 
 En resumen, Docker se puede considerar como una herramienta que permite crear y ejecutar contenedores, mientras que Kubernetes es una plataforma que permite gestionar y administrar una red de contenedores de manera eficiente y escalable.
 
-## Cluster Nodes
-Son servidores o máquinas que ejecutan los pods y sus contenedores. Cada nodo tiene un rol que determina qué tareas puede realizar en el clúster. Los roles de los nodos pueden incluir cosas como ejecutar pods, almacenar datos, actuar como un punto de entrada para el clúster o realizar tareas de supervisión. Algunos de los roles de nodos comunes en Kubernetes son:
+## Node Roles
+Existen varios tipos de roles de nodos, y estos pueden dividirse en dos categorías principales: Máster (Control Plane) y Worker.
 
-* `Master Node:` Un nodo maestro es un nodo especial que ejecuta el controlador de clúster y realiza tareas de administración como planificar los pods y realizar el seguimiento de su estado.
-* `Worker Node:`: Un nodo de trabajo es un nodo que ejecuta los pods y sus contenedores. Los nodos de trabajo pueden realizar cualquier tarea que se le asigne, como procesar solicitudes de entrada o almacenar datos.
-* `Storage Node:` Un nodo de almacenamiento es un nodo que se utiliza para almacenar datos persistentes. Los pods que necesiten almacenamiento persistente se colocarán en nodos de almacenamiento para garantizar que sus datos no se pierdan si se detienen o eliminan.
-* `Ingress Node:` Un nodo de ingreso es un nodo que actúa como un punto de entrada para el clúster. Los usuarios y aplicaciones externas pueden enviar solicitudes al clúster a través de un nodo de ingreso, que las redirigirá a los nodos de trabajo para su procesamiento.
+### Máster Nodes (Control Plane):
 
-Los roles de los nodos pueden ser asignados de forma estática o dinámica, dependiendo de las necesidades del clúster. Por ejemplo, un clúster pequeño puede tener un único nodo que actúe como maestro y de trabajo, mientras que un clúster más grande puede tener nodos dedicados para cada rol.
+Este tipo de nodo es responsable de la administración del clúster de Kubernetes. En estos nodos, se ejecutan los siguientes componentes:
+
+* kube-apiserver: Es el punto de entrada para todas las API REST utilizadas para controlar el clúster.
+* etcd: Almacena toda la información del clúster de Kubernetes. Es una base de datos distribuida y coherente.
+* kube-scheduler: Se encarga de distribuir el trabajo o los contenedores entre los diversos nodos.
+* kube-controller-manager: Ejecuta los controladores de Kubernetes, que son procesos de fondo que manejan las tareas de rutina en el clúster.
+* cloud-controller-manager: Permite que el clúster interactúe con la infraestructura de cloud del proveedor, asumiendo que el clúster se está ejecutando en la nube.
+
+### Worker Nodes (Nodos de Trabajo):
+
+Este tipo de nodo es el que ejecuta las aplicaciones y carga de trabajo. Contiene los siguientes componentes:
+
+* kubelet: Asegura que los contenedores estén ejecutándose en un pod.
+* kube-proxy: Es un proxy de red que refleja los servicios de k8s en cada nodo.
+* Container Runtime: Es el software que se utiliza para ejecutar contenedores. Docker es el más conocido, pero otros runtimes como containerd o CRI-O también son compatibles con Kubernetes.
 
 # Kubernetes Components
 Todos los componentes tienen una estructura común que se puede especificar mediante un fichero YAML o JSON, en nuestros ejemplos los veremos en formato YAML ya que facilitan la lectura.
